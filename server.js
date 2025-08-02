@@ -1,8 +1,10 @@
 const express = require("express");
 const fetch = require("node-fetch");
-require("dotenv").config();
-
+const cors = require("cors");
 const app = express();
+
+app.use(cors({ origin: "*" }));
+
 const PORT = process.env.PORT || 3000;
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
@@ -31,4 +33,5 @@ app.get("/subscriber-count", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+
 });
